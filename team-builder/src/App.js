@@ -1,19 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { useState } from 'react'
-import Form from './Form'
+import React, { useState } from "react";
+import "./App.css";
+import Form from "./Form";
+import TeamMembers from "./Teammember";
 
 function App() {
-  const [teamMember, setTeamMember] = useState({
-    fname: '',
-    lname: '',
-    role: ''
+  const [teamMember, setTeamMember] = useState([
+    
+  ]);
 
-  })
+  const addNewMem = mem => {
+    const newMem = {
+      fname: mem.fname,
+      lname: mem.lname,
+      role: mem.role
+    };
+    setTeamMember([...teamMember, newMem]);
+  };
+
   return (
     <div className="App">
-     <Form />
+      <Form addNewMem={addNewMem} />
+      <TeamMembers teamMember={teamMember} />
     </div>
   );
 }
